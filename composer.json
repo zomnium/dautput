@@ -1,0 +1,13 @@
+{
+	"require": {
+		"php": ">=5.3",
+		"symfony/console": "*",
+		"symfony/yaml": "*",
+		"monolog/monolog": "*",
+		"twig/twig": "*",
+		"tecnick.com/tcpdf": "*"
+	},
+	"autoload": {
+		"psr-0": {"Zomnium\\": "src/"}
+	}
+}
