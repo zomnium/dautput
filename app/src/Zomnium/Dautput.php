@@ -8,7 +8,7 @@
  * @copyright 	2014 Zomnium, Tim van Bergenhenegouwen
  */
 
-namespace Zomnium\Dautput;
+namespace Zomnium;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -16,13 +16,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class App extends Command
+class Dautput extends Command
 {
 	protected function configure()
 	{
 		$this
-			->setName('demo:greet')
-			->setDescription('Greet someone')
+			->setName('dautput')
+			->setDescription('From data to output.')
 			->addArgument(
 				'name',
 				InputArgument::OPTIONAL,
@@ -34,23 +34,41 @@ class App extends Command
 				InputOption::VALUE_NONE,
 				'If set, the task will yell in uppercase'
 				)
+			->addOption(
+				'examples',
+				null,
+				InputOption::VALUE_NONE,
+				'If set, the task will show some examples'
+				)
 		;
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
+		// Get name
 		$name = $input->getArgument('name');
+
+		// Create text
 		$text = ($name) ? 'Hello '.$name : 'Hello';
+
+		// Yell when needed
 		if ($input->getOption('yell'))
 			$text = strtoupper($text);
+
+		// Write greeting
 		$output->writeln($text);
-		// green text
-		$output->writeln('<info>foo</info>');
-		// yellow text
-		$output->writeln('<comment>foo</comment>');
-		// black text on a cyan background
-		$output->writeln('<question>foo</question>');
-		// white text on a red background
-		$output->writeln('<error>foo</error>');
+
+		// Show some examples
+		if ($input->getOption('examples'))
+		{
+			// green text
+			$output->writeln('<info>foo</info>');
+			// yellow text
+			$output->writeln('<comment>foo</comment>');
+			// black text on a cyan background
+			$output->writeln('<question>foo</question>');
+			// white text on a red background
+			$output->writeln('<error>foo</error>');
+		}
 	}
 }

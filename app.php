@@ -8,7 +8,7 @@
  * @copyright 	2014 Zomnium, Tim van Bergenhenegouwen
  */
 
-use Zomnium\Dautput\App;
+use Zomnium\Dautput;
 use Symfony\Component\Console\Application;
 
 // Composer autoloader
@@ -16,5 +16,5 @@ require_once __DIR__.'/vendor/autoload.php';
 
 // Application bootstrap
 $app = new Application();
-$app->add(new App);
+$app->add(new Dautput);
 $app->run();

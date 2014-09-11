@@ -8,6 +8,6 @@
 		"tecnick.com/tcpdf": "*"
 	},
 	"autoload": {
-		"psr-0": {"Zomnium\\": "src/"}
+		"psr-0": {"Zomnium\\": "app/src/"}
 	}
 }
